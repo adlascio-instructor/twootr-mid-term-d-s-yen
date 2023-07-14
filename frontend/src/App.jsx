@@ -1,9 +1,14 @@
+import Form from "../components/form.jsx";
+import Posts from "../components/posts.jsx";
 
 function App() {
 
   return (
     <>
-      <div>App.jsx</div>
+      <main>
+        <Form/>
+        <Posts/>
+      </main>
     </>
   )
 }
