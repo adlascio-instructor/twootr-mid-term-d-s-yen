@@ -1,7 +1,13 @@
-import Header from "../components/header.jsx";
-import Account from "../components/account.jsx";
-import Form from "../components/form.jsx";
-import Posts from "../components/posts.jsx";
+import Header from "./components/Header.jsx";
+import Account from "./components/Account.jsx";
+import Form from "./components/Form.jsx";
+import Posts from "./components/Posts.jsx";
+import Styled from "styled-components";
+
+const Main= Styled.main`
+    padding: 0 100px;
+    margin: 10px auto;
+`;
 
 function App() {
     return (
@@ -9,11 +15,11 @@ function App() {
             <header>
                 <Header />
             </header>
-            <main>
+            <Main>
                 <Account />
                 <Form />
                 <Posts />
-            </main>
+            </Main>
         </>
     );
 }
