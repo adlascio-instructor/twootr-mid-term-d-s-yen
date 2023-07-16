@@ -20,10 +20,10 @@ const Icon = styled.img`
 `;
 
 export default function Account() {
-    const [click, setClick] = useState(0);
+    const [userName, setUserName] = useState("John Doe");
 
     const handleClick = () => {
-        setClick(console.log("ya, u've clicked!"));
+        setUserName("New name");
     };
 
     return (
