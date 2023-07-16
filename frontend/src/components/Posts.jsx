@@ -12,7 +12,7 @@ export default function Posts({ postdata }) {
     return (
         <Section>
             {postdata.map((post, index) => (
-                <Post key={index} content={post} />
+                <Post key={index} props={post} />
             ))}
         </Section>
     );
