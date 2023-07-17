@@ -8,11 +8,11 @@ const Section = Styled.section`
     margin: 10px auto;
 `;
 
-export default function Posts({ postdata }) {
+export default function Posts(props) {
     return (
         <Section>
-            {postdata.map((post, index) => (
-                <Post key={index} props={post} />
+            {props.postdata.map((post, index) => (
+                <Post key={index} content={post} />
             ))}
         </Section>
     );

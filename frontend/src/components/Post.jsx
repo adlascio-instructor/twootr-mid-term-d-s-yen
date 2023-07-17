@@ -34,16 +34,16 @@ const Button = Styled.div`
     margin: 3px;
 `;
 
-export default function Post({ props }) {
+export default function Post(props) {
     return (
         <Article>
             <Account>
                 <div>icon </div>
-                <div> {props.author}</div>
+                <div> {props.content.author}</div>
             </Account>
-            <Paragraph>{props.content}</Paragraph>
+            <Paragraph>{props.content.content}</Paragraph>
             <div className="ago">...ago</div>
-            <UserName>@{props.authorSlug} </UserName>
+            <UserName>@{props.content.authorSlug} </UserName>
             <Buttons>
                 <Button>🏳️</Button>
                 <Button>🔄</Button>
