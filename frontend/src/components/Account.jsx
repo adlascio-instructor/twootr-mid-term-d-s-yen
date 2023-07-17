@@ -20,10 +20,18 @@ const Icon = styled.img`
 `;
 
 export default function Account() {
-    const [userName, setUserName] = useState("John Doe");
+    const [name, setName] = useState("");
+    const [inputFirstValue, setinputFirstValue] = useState("John");
+    const [inputSecondValue, setSecondValue] = useState("Doe");
 
-    const handleClick = () => {
-        setUserName("New name");
+    const handleInputChange = (event) => {
+        setinputFirstValue(event.target.value);
+    };
+
+    const handleButtonClick = () => {
+        setName(inputFirstValue);
+        setinputFirstValue("");
+        setSecondValue("");
     };
 
     return (
@@ -34,9 +42,18 @@ export default function Account() {
             />
 
             <Div>
-                <h3>John Doe</h3>
+                <input
+                    type="text"
+                    value={inputFirstValue}
+                    onChange={handleInputChange}
+                />
+                <input
+                    type="text"
+                    value={inputSecondValue}
+                    onChange={handleInputChange}
+                />
                 <Icon
-                    onClick={handleClick}
+                    onClick={handleButtonClick}
                     src="https://icons.veryicon.com/png/o/miscellaneous/geometry-icon-library/input-21.png"
                     height={"30rem"}
                 />
