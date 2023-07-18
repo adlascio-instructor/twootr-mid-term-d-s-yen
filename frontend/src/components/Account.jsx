@@ -33,6 +33,17 @@ export default function Account() {
     const isShowingInput = input === "noShow";
     const isShowingName = name === "noShow";
 
+    const [inputFirstValue, setInputFirstValue] = useState("John");
+    const [inputSecondValue, setInputSecondValue] = useState("Doe");
+
+    const handleFirstValue = (e) => {
+        setInputFirstValue(e.target.value);
+    };
+
+    const handleSecondValue = (e) => {
+        setInputSecondValue(e.target.value);
+    };
+
     const toggle = () => {
         setName(!"noShowshow");
         setInput(!"show");
@@ -48,8 +59,16 @@ export default function Account() {
             <Div>
                 <h3 style={isShowingName ? showing : notShowing}>John</h3>
                 <h3 style={isShowingName ? showing : notShowing}>Doe</h3>
-                <input style={isShowingInput ? notShowing : showing} />
-                <input style={isShowingInput ? notShowing : showing} />
+                <input
+                    style={isShowingInput ? notShowing : showing}
+                    value={inputFirstValue}
+                    onChange={handleFirstValue}
+                />
+                <input
+                    style={isShowingInput ? notShowing : showing}
+                    value={inputSecondValue}
+                    onChange={handleSecondValue}
+                />
                 <Icon
                     onClick={toggle}
                     src="https://icons.veryicon.com/png/o/miscellaneous/geometry-icon-library/input-21.png"
@@ -58,7 +77,8 @@ export default function Account() {
                     {/* {state ? "close" : "open"} */}
                 </Icon>
             </Div>
-            <p>@john-doe</p>
+            <p>{inputFirstValue}</p>
+            <p>{inputSecondValue}</p>
         </Section>
     );
 }
