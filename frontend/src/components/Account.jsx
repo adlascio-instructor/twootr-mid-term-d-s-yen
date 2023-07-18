@@ -33,6 +33,11 @@ export default function Account() {
     const isShowingInput = input === "noShow";
     const isShowingName = name === "noShow";
 
+    const toggle = () => {
+        setName(isShowingInput ? "show" : "noShow");
+        setInput(isShowingName ? "noShow" : "show");
+    };
+
     return (
         <Section>
             <img
@@ -46,7 +51,7 @@ export default function Account() {
                 <input style={isShowingInput ? notShowing : showing} />
                 <input style={isShowingInput ? notShowing : showing} />
                 <Icon
-                    // className={"toggleFalse" + (state ? "toggleTrue" : "")}
+                    onClick={toggle}
                     src="https://icons.veryicon.com/png/o/miscellaneous/geometry-icon-library/input-21.png"
                     height={"30rem"}
                 >
