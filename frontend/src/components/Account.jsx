@@ -1,6 +1,14 @@
 import { useState } from "react";
 import styled from "styled-components";
 
+const notShowing = {
+    display: "none",
+};
+
+const showing = {
+    display: "block",
+};
+
 const Section = styled.section`
     padding: 0;
     text-align: center;
@@ -20,19 +28,10 @@ const Icon = styled.img`
 `;
 
 export default function Account() {
-    const [name, setName] = useState("");
-    const [inputFirstValue, setinputFirstValue] = useState("John");
-    const [inputSecondValue, setSecondValue] = useState("Doe");
-
-    const handleInputChange = (event) => {
-        setinputFirstValue(event.target.value);
-    };
-
-    const handleButtonClick = () => {
-        setName(inputFirstValue);
-        setinputFirstValue("");
-        setSecondValue("");
-    };
+    const [input, setInput] = useState("noShow");
+    const [name, setName] = useState("noShow");
+    const isShowingInput = input === "noShow";
+    const isShowingName = name === "noShow";
 
     return (
         <Section>
@@ -42,21 +41,17 @@ export default function Account() {
             />
 
             <Div>
-                <input
-                    type="text"
-                    value={inputFirstValue}
-                    onChange={handleInputChange}
-                />
-                <input
-                    type="text"
-                    value={inputSecondValue}
-                    onChange={handleInputChange}
-                />
+                <h3 style={isShowingName ? showing : notShowing}>John</h3>
+                <h3 style={isShowingName ? showing : notShowing}>Doe</h3>
+                <input style={isShowingInput ? notShowing : showing} />
+                <input style={isShowingInput ? notShowing : showing} />
                 <Icon
-                    onClick={handleButtonClick}
+                    // className={"toggleFalse" + (state ? "toggleTrue" : "")}
                     src="https://icons.veryicon.com/png/o/miscellaneous/geometry-icon-library/input-21.png"
                     height={"30rem"}
-                />
+                >
+                    {/* {state ? "close" : "open"} */}
+                </Icon>
             </Div>
             <p>@john-doe</p>
         </Section>
