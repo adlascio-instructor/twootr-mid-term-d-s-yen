@@ -34,8 +34,8 @@ export default function Account() {
     const isShowingName = name === "noShow";
 
     const toggle = () => {
-        setName(isShowingInput ? "show" : "noShow");
-        setInput(isShowingName ? "noShow" : "show");
+        setName(!"noShowshow");
+        setInput(!"show");
     };
 
     return (
