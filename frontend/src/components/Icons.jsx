@@ -10,10 +10,10 @@ export default function Icons(){
     const bgColor=(e)=>{
         if(e.target.classList.contains("on")){
             e.target.style.fill="#555555"
-            e.target.classList.remove("on")
+            e.target.classList.remove("On")
         }else{
             e.target.style.fill="rgb(255,55,180)"
-            e.target.classList.add("on")
+            e.target.classList.add("On")
         }
     }
 
