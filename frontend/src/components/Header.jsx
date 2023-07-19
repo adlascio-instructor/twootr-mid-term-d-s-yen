@@ -23,6 +23,10 @@ const IMG = styled.img`
     align-items: center;
 `;
 
+const inputFocus = () => {
+    console.log("Submitted");
+};
+
 export default function Header() {
     return (
         <Div>
@@ -30,6 +34,7 @@ export default function Header() {
             <RightDiv>
                 <h3>Write a new tweet</h3>
                 <IMG
+                    onClick={inputFocus}
                     src="https://cdn-icons-png.flaticon.com/256/9053/9053268.png"
                     height="30px"
                 />
