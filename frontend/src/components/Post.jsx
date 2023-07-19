@@ -2,11 +2,19 @@ import Styled from "styled-components";
 import Icons from "./Icons.jsx";
 
 const Article = Styled.article`
+    position: relative;
     background-color: rgba(0, 0, 255, 0.2);
     position: relative;
     padding: 10px 20px;
     margin :10px auto;
     border-radius: 5px;
+
+    &: hover {
+        background-color: rgba(0, 0, 255, 0.3);
+        box-shadow: 5px 5px 10px grey;
+        top: -1px;
+        left: -2px;
+    }
 `;
 
 const Img = Styled.img`
