@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useRef } from "react";
 
 const Div = styled.div`
     display: flex;
@@ -23,11 +24,15 @@ const IMG = styled.img`
     align-items: center;
 `;
 
-const inputFocus = () => {
-    console.log("Submitted");
-};
-
 export default function Header() {
+    const textAreaRef = useRef(null);
+
+    const inputFocus = () => {
+        console.log("Submitted");
+        if (textAreaRef.current) {
+            textAreaRef.current.focus();
+        }
+    };
     return (
         <Div>
             <FirstH3>TWOOTR</FirstH3>
