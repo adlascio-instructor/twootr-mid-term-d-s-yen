@@ -2,8 +2,7 @@ import Styled from "styled-components";
 import { useState, useRef } from "react";
 import { keyframes, css } from "styled-components";
 
-
-const shake= keyframes`
+const shake = keyframes`
     0% {left: 0; background-color: #FF1A1D;}
     20% {left: -25px;}
     40% {left: 18px;}
@@ -24,7 +23,8 @@ const Form1 = Styled.form`
             : css`null`};
     animation-duration: .7s;
     animation-timing-function: linear;
-    background-color:${({validation})=>validation ? css`pink` : css`none`};
+    background-color:${({ validation }) =>
+        validation ? css`pink` : css`none`};
 `;
 
 const H2 = Styled.h2`
@@ -74,31 +74,30 @@ const Button = Styled.button`
 export default function Form() {
     const [formData, setFormData] = useState("");
     const [validation, setValidation] = useState(false);
-    
-    const formRef= useRef();
-    
-    const handleSubmit=(e)=>{
-    e.preventDefault();
-    console.log("Submitted.");
-    // Code here    
+
+    const formRef = useRef();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Submitted.");
+        // Code here
     };
 
-    const handleChange=(e)=>{
+    const handleChange = (e) => {
+        const count = 140 - formRef.current.value.length;
+        const submitButton = document.querySelector(".submitButton");
+        const letterCount = document.querySelector(".count");
 
-        const count= 140-formRef.current.value.length;
-        const submitButton= document.querySelector(".submitButton");
-        const letterCount= document.querySelector(".count");
-        
-        setFormData(()=>(e.target.value));
-        
-        letterCount.textContent= count;
+        setFormData(() => e.target.value);
 
-        if(count<0){
-            letterCount.style.color="red";
-            setValidation(true)
-        }else{
-            letterCount.style.color="black";
-            setValidation(false)
+        letterCount.textContent = count;
+
+        if (count < 0) {
+            letterCount.style.color = "red";
+            setValidation(true);
+        } else {
+            letterCount.style.color = "black";
+            setValidation(false);
         }
 
         if (count < 0 || count == 140) {
@@ -107,11 +106,10 @@ export default function Form() {
             submitButton.disabled = false;
         }
 
-        const textArea= document.querySelector("textarea");
-        const scrollHeight= textArea.scrollHeight;
+        const textArea = document.querySelector("textarea");
+        const scrollHeight = textArea.scrollHeight;
         //console.log("tetxtarea",scrollHeight);
-        textArea.setAttribute("rows", Math.ceil(scrollHeight/19));
-
+        textArea.setAttribute("rows", Math.ceil(scrollHeight / 19));
     };
 
     return (
@@ -130,5 +128,4 @@ export default function Form() {
             <LetterCount className="count">140</LetterCount>
         </Form1>
     );
-};
-
+}
