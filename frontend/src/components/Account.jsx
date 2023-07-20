@@ -57,7 +57,7 @@ export default function Account() {
 
     const [inputFirstValue, setInputFirstValue] = useState("John");
     const [inputSecondValue, setInputSecondValue] = useState("Doe");
-    const [avatarSlug, setAvatarSlug] = useState("john-doe");
+    const [authorSlug, setAvatarSlug] = useState("john-doe");
 
     const handleFirstValue = (e) => {
         setInputFirstValue(e.target.value);
@@ -95,7 +95,7 @@ export default function Account() {
     return (
         <Section>
             <img
-                src={`https://avatars.dicebear.com/api/bottts/${avatarSlug}.svg`}
+                src={`https://avatars.dicebear.com/api/bottts/${authorSlug}.svg`}
                 height={"150px"}
             />
 
