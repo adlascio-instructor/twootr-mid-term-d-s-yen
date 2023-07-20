@@ -15,8 +15,7 @@ export default function Main() {
     const [postdata, setPostdata] = useState([]);
 
     useEffect(() => {
-        axios
-            .get(`http://localhost:8080/twoots`)
+        axios.get(`http://localhost:8080/twoots`)
             .then((data) => {
                 console.log("Twoots:", data.data);
                 setPostdata([...data.data]);
