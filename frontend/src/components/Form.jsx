@@ -3,12 +3,12 @@ import { useState, useRef } from "react";
 import { keyframes, css } from 'styled-components';
 
 const shake= keyframes`
-    0% {left: 0; background-color: #FF4043;}
+    0% {left: 0; background-color: #FF1A1D;}
     20% {left: -25px;}
     40% {left: 18px;}
     60% {left: -10px;}
     80% {left: 5px;}
-    100% {left: 0; background-color: none;}
+    100% {left: 0; background-color: pink;}
 `;
 
 const Form1= Styled.form`
@@ -18,6 +18,7 @@ const Form1= Styled.form`
     animation-name:${({validation})=>validation ? css`${shake}` : css`null`};
     animation-duration: .7s;
     animation-timing-function: linear;
+    background-color:${({validation})=>validation ? css`pink` : css`none`};
 `;
 
 const H2= Styled.h2`
@@ -67,19 +68,19 @@ const Button= Styled.button`
 export default function Form(){
     
     const [formData, setFormData] = useState("");
-    const [validation, setValidation] = useState(false)
+    const [validation, setValidation] = useState(false);
     
     const formRef= useRef();
     
     const handleSubmit=(e)=>{
     e.preventDefault();
     console.log("Submitted.");
-    // Code here
-    }
+    // Code here    
+    };
 
     const handleChange=(e)=>{
 
-        const count=140-formRef.current.value.length;
+        const count= 140-formRef.current.value.length;
         const submitButton= document.querySelector(".submitButton");
         const letterCount= document.querySelector(".count");
         
@@ -103,10 +104,9 @@ export default function Form(){
 
         const textArea= document.querySelector("textarea");
         const scrollHeight= textArea.scrollHeight;
-        //console.log("tetxtarea",scrollHeight)
-        textArea.setAttribute("rows", Math.ceil(scrollHeight/19)
-        );
-    }
+        //console.log("tetxtarea",scrollHeight);
+        textArea.setAttribute("rows", Math.ceil(scrollHeight/19));
+    };
 
     return (
 
