@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useRef } from "react";
+// import { useRef } from "react";
 
 const Div = styled.div`
     display: flex;
@@ -25,13 +25,12 @@ const IMG = styled.img`
 `;
 
 export default function Header() {
-    const textAreaRef = useRef(null);
+    // const textArea = useRef(null);
 
     const inputFocus = () => {
-        console.log("Submitted");
-        if (textAreaRef.current) {
-            textAreaRef.current.focus();
-        }
+        const textArea = document.querySelector("textarea");
+        console.log("textarea", textArea);
+        textArea.focus();
     };
     return (
         <Div>
