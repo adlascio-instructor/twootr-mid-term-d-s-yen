@@ -1,6 +1,7 @@
 import Styled from "styled-components";
 import { useState, useRef } from "react";
-import { keyframes, css } from 'styled-components';
+import { keyframes, css } from "styled-components";
+
 
 const shake= keyframes`
     0% {left: 0; background-color: #FF1A1D;}
@@ -11,22 +12,27 @@ const shake= keyframes`
     100% {left: 0; background-color: pink;}
 `;
 
-const Form1= Styled.form`
+const Form1 = Styled.form`
     position: relative;
     padding: 10px;
     margin: 10px auto;
-    animation-name:${({validation})=>validation ? css`${shake}` : css`null`};
+    animation-name:${({ validation }) =>
+        validation
+            ? css`
+                  ${shake}
+              `
+            : css`null`};
     animation-duration: .7s;
     animation-timing-function: linear;
     background-color:${({validation})=>validation ? css`pink` : css`none`};
 `;
 
-const H2= Styled.h2`
+const H2 = Styled.h2`
     margin: 0.5rem 0;
     margin-top: 0;
 `;
 
-const TextArea =Styled.textarea`
+const TextArea = Styled.textarea`
     display: block;
     border: none;
     border-bottom: 1px solid black;
@@ -39,13 +45,13 @@ const TextArea =Styled.textarea`
         }
 `;
 
-const LetterCount=Styled.div`
+const LetterCount = Styled.div`
     position: absolute;
     bottom: 10px;
     right: 10px;
 `;
 
-const Button= Styled.button`
+const Button = Styled.button`
     background: #7FEBBC;
     border: none;
     border-radius: 3px;
@@ -64,9 +70,8 @@ const Button= Styled.button`
         color: grey;
     }
 `;
-    
-export default function Form(){
-    
+
+export default function Form() {
     const [formData, setFormData] = useState("");
     const [validation, setValidation] = useState(false);
     
@@ -96,32 +101,34 @@ export default function Form(){
             setValidation(false)
         }
 
-        if(count<0 || count==140){
-            submitButton.disabled= true;
-        }else{
-            submitButton.disabled= false;
+        if (count < 0 || count == 140) {
+            submitButton.disabled = true;
+        } else {
+            submitButton.disabled = false;
         }
 
         const textArea= document.querySelector("textarea");
         const scrollHeight= textArea.scrollHeight;
         //console.log("tetxtarea",scrollHeight);
         textArea.setAttribute("rows", Math.ceil(scrollHeight/19));
+
     };
 
     return (
-
-    <Form1 validation={validation ? 1:0} onSubmit={handleSubmit}>
-        <H2>Compose Twoot</H2>
-        <TextArea
-            onChange={handleChange}
-            ref={formRef}
-            name="twoot"
-            rows="1"
-            placeholder="What are you humming about?"
-        ></TextArea>
-        <Button className="submitButton" type="submit" disabled>Twoot</Button>
-        <LetterCount className="count">140</LetterCount>
-    </Form1>
-    
+        <Form1 validation={validation ? 1 : 0} onSubmit={handleSubmit}>
+            <H2>Compose Twoot</H2>
+            <TextArea
+                onChange={handleChange}
+                ref={formRef}
+                name="twoot"
+                rows="1"
+                placeholder="What are you humming about?"
+            ></TextArea>
+            <Button className="submitButton" type="submit" disabled>
+                Twoot
+            </Button>
+            <LetterCount className="count">140</LetterCount>
+        </Form1>
     );
 };
+
