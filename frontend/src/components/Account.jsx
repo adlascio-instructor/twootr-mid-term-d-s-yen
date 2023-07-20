@@ -57,13 +57,20 @@ export default function Account() {
 
     const [inputFirstValue, setInputFirstValue] = useState("John");
     const [inputSecondValue, setInputSecondValue] = useState("Doe");
+    const [authorSlug, setAvatarSlug] = useState("john-doe");
 
     const handleFirstValue = (e) => {
         setInputFirstValue(e.target.value);
+        setAvatarSlug(
+            `${e.target.value.toLowerCase()}-${inputSecondValue.toLowerCase()}`
+        );
     };
 
     const handleSecondValue = (e) => {
         setInputSecondValue(e.target.value);
+        setAvatarSlug(
+            `${inputFirstValue.toLowerCase()}-${e.target.value.toLowerCase()}`
+        );
     };
 
     const toggle = () => {
@@ -88,7 +95,7 @@ export default function Account() {
     return (
         <Section>
             <img
-                src="https://avatars.dicebear.com/api/bottts/${authorSlug}.svg"
+                src={`https://avatars.dicebear.com/api/bottts/${authorSlug}.svg`}
                 height={"150px"}
             />
 
@@ -130,8 +137,8 @@ export default function Account() {
                 />
             </Div>
             <UserAccordingInput>
-                <h4>{inputFirstValue}</h4>
-                <h4>{inputSecondValue}</h4>
+                <h4>@{inputFirstValue.toLowerCase()}-</h4>
+                <h4>{inputSecondValue.toLowerCase()}</h4>
             </UserAccordingInput>
         </Section>
     );
