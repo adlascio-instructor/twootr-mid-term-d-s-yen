@@ -87,7 +87,7 @@ export default function Account() {
         setIcon(icon === "show" ? "noShow" : "show");
 
         if (h3FirstRef.current && h3SecondRef.current) {
-            h3FirstRef.current.innerText = inputFirstRef.current.value;
+            h3FirstRef.current.innerText = inputFirstRef.current.value + " ";
             h3SecondRef.current.innerText = inputSecondRef.current.value;
         }
     };
@@ -104,7 +104,7 @@ export default function Account() {
                     style={isShowingName ? showing : notShowing}
                     ref={h3FirstRef}
                 >
-                    John
+                    John&nbsp;
                 </h3>
                 <h3
                     style={isShowingName ? showing : notShowing}
@@ -118,6 +118,7 @@ export default function Account() {
                     onChange={handleFirstValue}
                     ref={inputFirstRef}
                 />
+                &nbsp;
                 <input
                     style={isShowingInput ? notShowing : showing}
                     value={inputSecondValue}
