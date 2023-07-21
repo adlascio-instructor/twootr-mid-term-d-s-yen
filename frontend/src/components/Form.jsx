@@ -1,5 +1,5 @@
 import Styled from "styled-components";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { keyframes, css } from "styled-components";
 import axios from "axios";
 
@@ -78,22 +78,21 @@ export default function Form() {
 
     const formRef = useRef();
 
-    // const apiUrl = "http://localhost:8080/twoots";
-    const testData = {
-        newTwoot: {
-            author: "Yen Lun Liu",
-            content: "Today is a good day coding eh!",
-            authorSlug: "yen-lun-liu",
-            dateAdded: "2023-07-06",
-        },
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Submitted.");
         // Code here
+        // const apiUrl = "http://localhost:8080/twoot";
+        const testData = {
+            newTwoot: {
+                author: "Yen Lun Liu",
+                content: "Hello",
+                authorSlug: "yen-lun-liu",
+                dateAdded: "2023-07-06",
+            },
+        };
         axios
-            .post(`http://localhost:8080/twoots`, testData)
+            .post(`http://localhost:8080/twoot`, testData)
             .then((response) => {
                 console.log("Response", response.data);
             })
