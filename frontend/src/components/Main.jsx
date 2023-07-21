@@ -16,6 +16,7 @@ export default function Main() {
     const [authorSlug, setAuthorSlug] = useState("john-doe");
     const [inputFirstValue, setInputFirstValue] = useState("John");
     const [inputSecondValue, setInputSecondValue] = useState("Doe");
+    const combineName = inputFirstValue + " " + inputSecondValue;
 
     useEffect(() => {
         axios
@@ -42,6 +43,7 @@ export default function Main() {
             <Form
                 inputFirstValue={inputFirstValue}
                 inputSecondValue={inputSecondValue}
+                combineName={combineName}
                 setInputFirstValue={setInputFirstValue}
                 setInputSecondValue={setInputSecondValue}
                 authorSlug={authorSlug}

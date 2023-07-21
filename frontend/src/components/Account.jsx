@@ -55,8 +55,8 @@ export default function Account(props) {
     const isShowingCheckedIcon = checkedIcon === "noShow";
     const isShowingIcon = icon === "show";
 
-    const combineName = props.inputFirstValue + " " + props.inputSecondValue;
-    console.log(combineName, "combineName");
+    // const combineName = props.inputFirstValue + " " + props.inputSecondValue;
+    // console.log(combineName, "combineName");
 
     const handleFirstValue = (e) => {
         props.setInputFirstValue(e.target.value);
