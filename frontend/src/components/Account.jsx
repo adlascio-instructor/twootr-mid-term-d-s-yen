@@ -39,7 +39,7 @@ const UserAccordingInput = styled.div`
     text-align: center;
 `;
 
-export default function Account() {
+export default function Account(props) {
     const inputFirstRef = useRef(null);
     const inputSecondRef = useRef(null);
     const h3FirstRef = useRef(null);
@@ -55,21 +55,20 @@ export default function Account() {
     const isShowingCheckedIcon = checkedIcon === "noShow";
     const isShowingIcon = icon === "show";
 
-    const [inputFirstValue, setInputFirstValue] = useState("John");
-    const [inputSecondValue, setInputSecondValue] = useState("Doe");
-    const [authorSlug, setAvatarSlug] = useState("john-doe");
+    // const combineName = props.inputFirstValue + " " + props.inputSecondValue;
+    // console.log(combineName, "combineName");
 
     const handleFirstValue = (e) => {
-        setInputFirstValue(e.target.value);
-        setAvatarSlug(
-            `${e.target.value.toLowerCase()}-${inputSecondValue.toLowerCase()}`
+        props.setInputFirstValue(e.target.value);
+        props.setAuthorSlug(
+            `${e.target.value.toLowerCase()}-${props.inputSecondValue.toLowerCase()}`
         );
     };
 
     const handleSecondValue = (e) => {
-        setInputSecondValue(e.target.value);
-        setAvatarSlug(
-            `${inputFirstValue.toLowerCase()}-${e.target.value.toLowerCase()}`
+        props.setInputSecondValue(e.target.value);
+        props.setAuthorSlug(
+            `${props.inputFirstValue.toLowerCase()}-${e.target.value.toLowerCase()}`
         );
     };
 
@@ -95,7 +94,7 @@ export default function Account() {
     return (
         <Section>
             <img
-                src={`https://avatars.dicebear.com/api/bottts/${authorSlug}.svg`}
+                src={`https://avatars.dicebear.com/api/bottts/${props.authorSlug}.svg`}
                 height={"150px"}
             />
 
@@ -114,14 +113,14 @@ export default function Account() {
                 </h3>
                 <input
                     style={isShowingInput ? notShowing : showing}
-                    value={inputFirstValue}
+                    value={props.inputFirstValue}
                     onChange={handleFirstValue}
                     ref={inputFirstRef}
                 />
                 &nbsp;
                 <input
                     style={isShowingInput ? notShowing : showing}
-                    value={inputSecondValue}
+                    value={props.inputSecondValue}
                     onChange={handleSecondValue}
                     ref={inputSecondRef}
                 />
@@ -138,8 +137,8 @@ export default function Account() {
                 />
             </Div>
             <UserAccordingInput>
-                <h4>@{inputFirstValue.toLowerCase()}-</h4>
-                <h4>{inputSecondValue.toLowerCase()}</h4>
+                <h4>@{props.inputFirstValue.toLowerCase()}-</h4>
+                <h4>{props.inputSecondValue.toLowerCase()}</h4>
             </UserAccordingInput>
         </Section>
     );
