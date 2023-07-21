@@ -13,9 +13,12 @@ margin: 10px auto;
 
 export default function Main() {
     const [postdata, setPostdata] = useState([]);
+    const [authorSlug, setAuthorSlug] = useState("john-doe");
+    const [combineName, setCombineName] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/twoots`)
+        axios
+            .get(`http://localhost:8080/twoots`)
             .then((data) => {
                 console.log("Twoots:", data.data);
                 setPostdata([...data.data]);
@@ -27,8 +30,8 @@ export default function Main() {
 
     return (
         <Main1>
-            <Account />
-            <Form />
+            <Account authorSlug={authorSlug} setAuthorSlug={setAuthorSlug} />
+            <Form authorSlug={authorSlug} setAuthorSlug={setAuthorSlug} />
             <Posts postdata={postdata} />
         </Main1>
     );

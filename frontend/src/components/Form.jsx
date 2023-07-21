@@ -16,10 +16,15 @@ const Form1 = Styled.form`
     position: relative;
     padding: 10px;
     margin: 10px auto;
-    animation-name:${(props) => props.validation ? css`${shake}`: css`null`};
+    animation-name:${(props) =>
+        props.validation
+            ? css`
+                  ${shake}
+              `
+            : css`null`};
     animation-duration: .7s;
     animation-timing-function: linear;
-    background-color:${(props) => props.validation ? css`pink`: css`none`};
+    background-color:${(props) => (props.validation ? css`pink` : css`none`)};
 `;
 
 const H2 = Styled.h2`
@@ -66,7 +71,7 @@ const Button = Styled.button`
     }
 `;
 
-export default function Form() {
+export default function Form(props) {
     const [formData, setFormData] = useState("");
     const [validation, setValidation] = useState(false);
 
@@ -79,9 +84,9 @@ export default function Form() {
         // const apiUrl = "http://localhost:8080/twoot";
         const testData = {
             newTwoot: {
-                author: "Yen Lun Liu",
-                content: "Hello",
-                authorSlug: "yen-lun-liu",
+                author: props.combineName,
+                content: formData,
+                authorSlug: props.authorSlug,
                 dateAdded: "2023-07-06",
             },
         };
