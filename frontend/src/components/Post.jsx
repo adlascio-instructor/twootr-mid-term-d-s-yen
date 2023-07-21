@@ -100,7 +100,7 @@ export default function Post(props) {
         if(differenceD==0 || differenceD==1){
             setNewpost(true);
         }
-    },[])
+    })
     
     return (
         <Article>

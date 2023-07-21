@@ -16,16 +16,10 @@ const Form1 = Styled.form`
     position: relative;
     padding: 10px;
     margin: 10px auto;
-    animation-name:${({ validation }) =>
-        validation
-            ? css`
-                  ${shake}
-              `
-            : css`null`};
+    animation-name:${(props) => props.validation ? css`${shake}`: css`null`};
     animation-duration: .7s;
     animation-timing-function: linear;
-    background-color:${({ validation }) =>
-        validation ? css`pink` : css`none`};
+    background-color:${(props) => props.validation ? css`pink`: css`none`};
 `;
 
 const H2 = Styled.h2`
