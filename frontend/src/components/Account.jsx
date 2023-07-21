@@ -55,22 +55,20 @@ export default function Account(props) {
     const isShowingCheckedIcon = checkedIcon === "noShow";
     const isShowingIcon = icon === "show";
 
-    const [inputFirstValue, setInputFirstValue] = useState("John");
-    const [inputSecondValue, setInputSecondValue] = useState("Doe");
-    const combineName = inputFirstValue + " " + inputSecondValue;
+    const combineName = props.inputFirstValue + " " + props.inputSecondValue;
     console.log(combineName, "combineName");
 
     const handleFirstValue = (e) => {
-        setInputFirstValue(e.target.value);
+        props.setInputFirstValue(e.target.value);
         props.setAuthorSlug(
-            `${e.target.value.toLowerCase()}-${inputSecondValue.toLowerCase()}`
+            `${e.target.value.toLowerCase()}-${props.inputSecondValue.toLowerCase()}`
         );
     };
 
     const handleSecondValue = (e) => {
-        setInputSecondValue(e.target.value);
+        props.setInputSecondValue(e.target.value);
         props.setAuthorSlug(
-            `${inputFirstValue.toLowerCase()}-${e.target.value.toLowerCase()}`
+            `${props.inputFirstValue.toLowerCase()}-${e.target.value.toLowerCase()}`
         );
     };
 
@@ -115,14 +113,14 @@ export default function Account(props) {
                 </h3>
                 <input
                     style={isShowingInput ? notShowing : showing}
-                    value={inputFirstValue}
+                    value={props.inputFirstValue}
                     onChange={handleFirstValue}
                     ref={inputFirstRef}
                 />
                 &nbsp;
                 <input
                     style={isShowingInput ? notShowing : showing}
-                    value={inputSecondValue}
+                    value={props.inputSecondValue}
                     onChange={handleSecondValue}
                     ref={inputSecondRef}
                 />
@@ -139,8 +137,8 @@ export default function Account(props) {
                 />
             </Div>
             <UserAccordingInput>
-                <h4>@{inputFirstValue.toLowerCase()}-</h4>
-                <h4>{inputSecondValue.toLowerCase()}</h4>
+                <h4>@{props.inputFirstValue.toLowerCase()}-</h4>
+                <h4>{props.inputSecondValue.toLowerCase()}</h4>
             </UserAccordingInput>
         </Section>
     );

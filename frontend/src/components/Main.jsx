@@ -14,7 +14,8 @@ margin: 10px auto;
 export default function Main() {
     const [postdata, setPostdata] = useState([]);
     const [authorSlug, setAuthorSlug] = useState("john-doe");
-    const [combineName, setCombineName] = useState([]);
+    const [inputFirstValue, setInputFirstValue] = useState("John");
+    const [inputSecondValue, setInputSecondValue] = useState("Doe");
 
     useEffect(() => {
         axios
@@ -30,8 +31,22 @@ export default function Main() {
 
     return (
         <Main1>
-            <Account authorSlug={authorSlug} setAuthorSlug={setAuthorSlug} />
-            <Form authorSlug={authorSlug} setAuthorSlug={setAuthorSlug} />
+            <Account
+                inputFirstValue={inputFirstValue}
+                inputSecondValue={inputSecondValue}
+                setInputFirstValue={setInputFirstValue}
+                setInputSecondValue={setInputSecondValue}
+                authorSlug={authorSlug}
+                setAuthorSlug={setAuthorSlug}
+            />
+            <Form
+                inputFirstValue={inputFirstValue}
+                inputSecondValue={inputSecondValue}
+                setInputFirstValue={setInputFirstValue}
+                setInputSecondValue={setInputSecondValue}
+                authorSlug={authorSlug}
+                setAuthorSlug={setAuthorSlug}
+            />
             <Posts postdata={postdata} />
         </Main1>
     );
