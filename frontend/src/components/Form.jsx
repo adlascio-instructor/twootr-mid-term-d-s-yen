@@ -80,7 +80,7 @@ export default function Form(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Submitted.");
-        console.log("props.combineName", props.combineName);
+        // console.log("props.combineName", props.combineName);
         // Code here
         // const apiUrl = "http://localhost:8080/twoot";
         const testData = {
