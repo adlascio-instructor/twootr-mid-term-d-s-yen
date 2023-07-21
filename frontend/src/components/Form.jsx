@@ -1,6 +1,7 @@
 import Styled from "styled-components";
 import { useState, useRef } from "react";
 import { keyframes, css } from "styled-components";
+import axios from "axios";
 
 const shake = keyframes`
     0% {left: 0; background-color: #FF1A1D;}
@@ -77,10 +78,28 @@ export default function Form() {
 
     const formRef = useRef();
 
+    // const apiUrl = "http://localhost:8080/twoots";
+    const testData = {
+        newTwoot: {
+            author: "Yen Lun Liu",
+            content: "Today is a good day coding eh!",
+            authorSlug: "yen-lun-liu",
+            dateAdded: "2023-07-06",
+        },
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Submitted.");
         // Code here
+        axios
+            .post(`http://localhost:8080/twoots`, testData)
+            .then((response) => {
+                console.log("Response", response.data);
+            })
+            .catch((error) => {
+                console.log("Error", error);
+            });
     };
 
     const handleChange = (e) => {
