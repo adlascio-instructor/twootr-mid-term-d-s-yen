@@ -4,12 +4,13 @@ import Posts from "./Posts.jsx";
 
 import Styled from "styled-components";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Main1 = Styled.main`
-padding: 0 100px;
-margin: 10px auto;
+
+margin: 0 auto;
 `;
+// padding: 0 100px;
 
 export default function Main() {
     const [postdata, setPostdata] = useState([]);
@@ -18,17 +19,21 @@ export default function Main() {
     const [inputSecondValue, setInputSecondValue] = useState("Doe");
     const combineName = inputFirstValue + " " + inputSecondValue;
 
+    const textAreaRef= useRef("");
+    const [update, setUpdate]= useState(false);
+
     useEffect(() => {
         axios
             .get(`http://localhost:8080/twoots`)
             .then((data) => {
                 console.log("Twoots:", data.data);
                 setPostdata([...data.data]);
+                console.log("REF:",textAreaRef.current.value)
             })
             .catch((err) => {
                 console.log("ERROR:", err);
             });
-    }, []);
+    }, [update]);
 
     return (
         <Main1>
@@ -41,6 +46,8 @@ export default function Main() {
                 setAuthorSlug={setAuthorSlug}
             />
             <Form
+                updateState={()=>setUpdate(!update)}
+                forwardedRef={textAreaRef}
                 inputFirstValue={inputFirstValue}
                 inputSecondValue={inputSecondValue}
                 combineName={combineName}

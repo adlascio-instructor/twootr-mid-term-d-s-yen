@@ -4,6 +4,7 @@ import Styled from "styled-components";
 const Section = Styled.section`
     position: relative;
     margin: 10px auto;
+    width: 80%;
 `;
 
 export default function Posts(props) {

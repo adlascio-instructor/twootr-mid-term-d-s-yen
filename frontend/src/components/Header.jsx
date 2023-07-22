@@ -33,16 +33,18 @@ export default function Header() {
         textArea.focus();
     };
     return (
-        <Div>
-            <FirstH3>TWOOTR</FirstH3>
-            <RightDiv>
-                <h3>Write a new tweet</h3>
-                <IMG
-                    onClick={inputFocus}
-                    src="https://cdn-icons-png.flaticon.com/256/9053/9053268.png"
-                    height="30px"
-                />
-            </RightDiv>
-        </Div>
+        <header>
+            <Div>
+                <FirstH3>TWOOTR</FirstH3>
+                <RightDiv>
+                    <h3>Write a new tweet</h3>
+                    <IMG
+                        onClick={inputFocus}
+                        src="https://cdn-icons-png.flaticon.com/256/9053/9053268.png"
+                        height="30px"
+                    />
+                </RightDiv>
+            </Div>
+        </header>
     );
 }

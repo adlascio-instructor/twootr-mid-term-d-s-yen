@@ -4,11 +4,8 @@ import Main from "./components/Main.jsx"
 function App() {
     return (
         <>
-            <header>
-                <Header />
-            </header>
+            <Header />
             <Main />
-            
         </>
     );
 }
