@@ -1,5 +1,5 @@
 import Styled from "styled-components";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { keyframes, css } from "styled-components";
 import axios from "axios";
 
@@ -16,6 +16,7 @@ const Form1 = Styled.form`
     position: relative;
     padding: 10px;
     margin: 10px auto;
+    width: 80%;
     animation-name:${(props) =>
         props.validation
             ? css`
@@ -75,20 +76,22 @@ export default function Form(props) {
     const [formData, setFormData] = useState("");
     const [validation, setValidation] = useState(false);
 
-    const formRef = useRef();
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Submitted.");
-        // console.log("props.combineName", props.combineName);
-        // Code here
-        // const apiUrl = "http://localhost:8080/twoot";
+        props.updateState();
+        props.forwardedRef.current.value= "";
+        document.querySelector(".count").textContent= "140";
+        document.querySelector(".submitButton").disabled= true;
+
+        const newdate= new Date()
+        const dateAdded= `${newdate.getFullYear()}-${newdate.getMonth()+1}-${newdate.getDate()}`
+
         const testData = {
             newTwoot: {
                 author: props.combineName,
                 content: formData,
                 authorSlug: props.authorSlug,
-                dateAdded: "2023-07-06",
+                dateAdded: dateAdded
             },
         };
         axios
@@ -102,12 +105,11 @@ export default function Form(props) {
     };
 
     const handleChange = (e) => {
-        const count = 140 - formRef.current.value.length;
+        const count = 140 - props.forwardedRef.current.value.length;
         const submitButton = document.querySelector(".submitButton");
         const letterCount = document.querySelector(".count");
 
         setFormData(() => e.target.value);
-
         letterCount.textContent = count;
 
         if (count < 0) {
@@ -126,7 +128,6 @@ export default function Form(props) {
 
         const textArea = document.querySelector("textarea");
         const scrollHeight = textArea.scrollHeight;
-        //console.log("tetxtarea",scrollHeight);
         textArea.setAttribute("rows", Math.ceil(scrollHeight / 19));
     };
 
@@ -135,11 +136,11 @@ export default function Form(props) {
             <H2>Compose Twoot</H2>
             <TextArea
                 onChange={handleChange}
-                ref={formRef}
+                ref={props.forwardedRef}
                 name="twoot"
                 rows="1"
                 placeholder="What are you humming about?"
-            ></TextArea>
+            />
             <Button className="submitButton" type="submit" disabled>
                 Twoot
             </Button>
