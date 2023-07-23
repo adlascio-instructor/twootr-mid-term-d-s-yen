@@ -34,7 +34,7 @@ export default function Header() {
     };
     return (
         <header>
-            <Div>
+            <Div style={{ height: "75px" }}>
                 <FirstH3>TWOOTR</FirstH3>
                 <RightDiv>
                     <h3>Write a new tweet</h3>
